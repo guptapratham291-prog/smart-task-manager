@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Society Manager</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="layout">
+    <header>
+      <div class="header-content">
+        <div class="logo-section">
+          <i class="fas fa-building logo-icon"></i>
+          <h1>Society Manager</h1>
+        </div>
+        <div id="userBar" class="user-bar hidden">
+          <div class="user-info">
+            <i class="fas fa-user-circle"></i>
+            <span id="userLabel"></span>
+          </div>
+          <button id="logoutBtn" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="authSection" class="card auth-card">
+        <div class="auth-header">
+          <h2><i class="fas fa-lock"></i> Authentication</h2>
+        </div>
+        <div class="tabs">
+          <button id="loginTab" class="active"><i class="fas fa-sign-in-alt"></i> Login</button>
+          <button id="registerTab"><i class="fas fa-user-plus"></i> Register</button>
+        </div>
+        <div id="loginForm" class="form-block">
+          <h3>Welcome Back</h3>
+          <div class="form-group">
+            <label><i class="fas fa-envelope"></i> Email</label>
+            <input id="loginEmail" type="email" placeholder="your@email.com" />
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-key"></i> Password</label>
+            <input id="loginPassword" type="password" placeholder="••••••••" />
+          </div>
+          <button id="loginBtn" class="btn-primary"><i class="fas fa-sign-in-alt"></i> Login</button>
+        </div>
+        <div id="registerForm" class="form-block hidden">
+          <h3>Create Your Account</h3>
+          <div class="form-group">
+            <label><i class="fas fa-user"></i> Name</label>
+            <input id="regName" type="text" placeholder="Your full name" />
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-envelope"></i> Email</label>
+            <input id="regEmail" type="email" placeholder="your@email.com" />
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-key"></i> Password</label>
+            <input id="regPassword" type="password" placeholder="••••••••" />
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-phone"></i> Phone</label>
+            <input id="regPhone" type="text" placeholder="+1 234 567 8900" />
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-door-open"></i> Flat Number</label>
+            <input id="regFlat" type="text" placeholder="A-101" />
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-id-card"></i> Role</label>
+            <select id="regRole">
+              <option value="RESIDENT">Resident</option>
+              <option value="GUARD">Guard</option>
+              <option value="ADMIN">Admin</option>
+            </select>
+          </div>
+          <button id="registerBtn" class="btn-primary"><i class="fas fa-user-plus"></i> Register</button>
+        </div>
+      </section>
+
+      <section id="dashboard" class="card hidden">
+        <h2 id="dashboardTitle">Dashboard</h2>
+        <div id="residentPanel" class="panel hidden">
+          <h3><i class="fas fa-home"></i> Resident Actions</h3>
+          <div class="grid">
+            <div class="panel-block">
+              <div class="panel-header">
+                <i class="fas fa-user-friends"></i>
+                <h4>Invite Visitor</h4>
+              </div>
+              <div class="form-group">
+                <label>Name</label>
+                <input id="visitName" type="text" placeholder="Guest name" />
+              </div>
+              <div class="form-group">
+                <label>Mobile</label>
+                <input id="visitMobile" type="text" placeholder="Phone number" />
+              </div>
+              <div class="form-group">
+                <label>Vehicle</label>
+                <input id="visitVehicle" type="text" placeholder="License plate" />
+              </div>
+              <div class="form-group">
+                <label>Purpose</label>
+                <input id="visitPurpose" type="text" placeholder="Visit purpose" />
+              </div>
+              <button id="inviteBtn" class="btn-action"><i class="fas fa-plus-circle"></i> Invite</button>
+            </div>
+            <div class="panel-block">
+              <div class="panel-header">
+                <i class="fas fa-check-circle"></i>
+                <h4>Approve / Reject</h4>
+              </div>
+              <div class="form-group">
+                <label>Visitor ID</label>
+                <input id="visitorId" type="number" placeholder="Enter ID" />
+              </div>
+              <div class="button-group">
+                <button id="approveBtn" class="btn-success"><i class="fas fa-check"></i> Approve</button>
+                <button id="rejectBtn" class="btn-danger"><i class="fas fa-times"></i> Reject</button>
+              </div>
+            </div>
+            <div class="panel-block">
+              <div class="panel-header">
+                <i class="fas fa-exclamation-circle"></i>
+                <h4>Raise Complaint</h4>
+              </div>
+              <div class="form-group">
+                <label>Subject</label>
+                <input id="complaintSubject" type="text" placeholder="Issue subject" />
+              </div>
+              <div class="form-group">
+                <label>Description</label>
+                <textarea id="complaintDesc" placeholder="Describe the issue..."></textarea>
+              </div>
+              <button id="complaintBtn" class="btn-action"><i class="fas fa-paper-plane"></i> Submit</button>
+            </div>
+            <div class="panel-block">
+              <div class="panel-header">
+                <i class="fas fa-calendar-check"></i>
+                <h4>Book Amenity</h4>
+              </div>
+              <div class="form-group">
+                <label>Amenity</label>
+                <select id="amenitySelect">
+                  <option>Club House</option>
+                  <option>Gym</option>
+                  <option>Swimming Pool</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Start</label>
+                <input id="amenityStart" type="datetime-local" />
+              </div>
+              <div class="form-group">
+                <label>End</label>
+                <input id="amenityEnd" type="datetime-local" />
+              </div>
+              <button id="amenityBtn" class="btn-action"><i class="fas fa-book"></i> Book</button>
+            </div>
+            <div class="panel-block">
+              <div class="panel-header">
+                <i class="fas fa-credit-card"></i>
+                <h4>Pay Maintenance</h4>
+              </div>
+              <div class="form-group">
+                <label>Month</label>
+                <input id="billMonth" type="text" placeholder="May 2026" />
+              </div>
+              <div class="form-group">
+                <label>Amount</label>
+                <input id="billAmount" type="number" placeholder="Amount in rupees" />
+              </div>
+              <div class="form-group">
+                <label>Due Date</label>
+                <input id="billDue" type="date" />
+              </div>
+              <button id="payMaintenanceBtn" class="btn-action"><i class="fas fa-money-bill-wave"></i> Pay</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="guardPanel" class="panel hidden">
+          <h3><i class="fas fa-shield-alt"></i> Guard Actions</h3>
+          <div class="grid">
+            <div class="panel-block">
+              <div class="panel-header">
+                <i class="fas fa-clipboard-list"></i>
+                <h4>Add Visitor Entry</h4>
+              </div>
+              <div class="form-group">
+                <label>Name</label>
+                <input id="guardVisitName" type="text" placeholder="Guest name" />
+              </div>
+              <div class="form-group">
+                <label>Mobile</label>
+                <input id="guardVisitMobile" type="text" placeholder="Phone number" />
+              </div>
+              <div class="form-group">
+                <label>Vehicle</label>
+                <input id="guardVisitVehicle" type="text" placeholder="License plate" />
+              </div>
+              <div class="form-group">
+                <label>Purpose</label>
+                <input id="guardVisitPurpose" type="text" placeholder="Visit purpose" />
+              </div>
+              <button id="addVisitorEntryBtn" class="btn-action"><i class="fas fa-plus-circle"></i> Log Entry</button>
+            </div>
+            <div class="panel-block">
+              <div class="panel-header">
+                <i class="fas fa-hourglass-end"></i>
+                <h4>Pending Visitors</h4>
+              </div>
+              <p>View all pending visitor requests</p>
+              <button id="pendingBtn" class="btn-action"><i class="fas fa-list"></i> Load Pending</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="adminPanel" class="panel hidden">
+          <h3><i class="fas fa-crown"></i> Admin Actions</h3>
+          <div class="grid">
+            <div class="panel-block">
+              <div class="panel-header">
+                <i class="fas fa-bullhorn"></i>
+                <h4>Publish Notice</h4>
+              </div>
+              <div class="form-group">
+                <label>Title</label>
+                <input id="noticeTitle" type="text" placeholder="Notice title" />
+              </div>
+              <div class="form-group">
+                <label>Message</label>
+                <textarea id="noticeMessage" placeholder="Enter notice message..."></textarea>
+              </div>
+              <button id="publishNoticeBtn" class="btn-action"><i class="fas fa-paper-plane"></i> Publish</button>
+            </div>
+            <div class="panel-block">
+              <div class="panel-header">
+                <i class="fas fa-tasks"></i>
+                <h4>Manage Complaints</h4>
+              </div>
+              <p>View and manage all resident complaints</p>
+              <button id="listComplaintsBtn" class="btn-action"><i class="fas fa-list"></i> Load Complaints</button>
+            </div>
+            <div class="panel-block">
+              <div class="panel-header">
+                <i class="fas fa-chart-bar"></i>
+                <h4>Analytics</h4>
+              </div>
+              <p>View society analytics and reports</p>
+              <button id="analyticsBtn" class="btn-action"><i class="fas fa-chart-line"></i> Load Analytics</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="responseSection" class="card hidden">
+        <h3><i class="fas fa-server"></i> Server Response</h3>
+        <pre id="responseOutput"></pre>
+      </section>
+
+      <section id="messageSection" class="card hidden message-card">
+        <p id="messageText"></p>
+      </section>
+    </main>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
